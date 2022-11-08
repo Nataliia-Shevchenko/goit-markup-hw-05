@@ -556,6 +556,30 @@ img {
 .project-item:not(:nth-last-child(-n + 3)) {
   margin-bottom: 30px;
 }
+.project-thumb {
+  position: relative;
+
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+  transition: transform 250ms ease;
+}
+.project-link:hover .overlay {
+  transform: translateY(0);
+}
+.overlay-text {
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--primary-bgc);
+}
 
 .project-text {
   padding: 20px 24px;
