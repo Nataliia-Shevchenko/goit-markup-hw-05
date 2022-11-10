@@ -1,4 +1,5 @@
 :root {
+  /*----colors---*/
   --primary-text-color: #212121;
   --secondary-text-color: #757575;
   --accent-color: #2196f3;
@@ -10,6 +11,8 @@
   --footer-bgc: #2f303a;
   --hero-btn-active-color: #188ce8;
   --icon-color: #afb1b8;
+  /*----animations----*/
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -122,17 +125,19 @@ img {
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
+  transition: color 250ms var(--timing-function);
 }
 
 .current::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -1px;
   width: 100%;
   height: 4px;
   border-radius: 2px;
   background-color: var(--accent-color);
+  /* transition: background-color 2500ms var(--timing-function); */
 }
 
 .contacts {
@@ -157,6 +162,7 @@ img {
 .contacts .link:hover,
 .contacts .link:focus {
   color: var(--accent-color);
+  transition: color 250ms var(--timing-function);
 }
 .mail-icon,
 .phone-icon {
@@ -217,6 +223,7 @@ img {
 .hero-btn:hover,
 .hero-btn:focus {
   background: var(--hero-btn-active-color);
+  transition: background 250ms var(--timing-function);
 }
 
 .backdrop {
@@ -226,20 +233,29 @@ img {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 250ms var(--timing-function);
 }
 
 .backdrop.is-hidden {
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--timing-function);
+
   min-width: 528px;
   min-height: 581px;
+  padding: 8px;
 
   background: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -250,6 +266,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
   width: 30px;
   height: 30px;
   background: #ffffff;
@@ -401,6 +418,8 @@ img {
 .socials-link:focus {
   background-color: var(--accent-color);
   color: var(--primary-bgc);
+  transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function);
 }
 .socials-icon {
   fill: currentColor;
@@ -430,6 +449,8 @@ img {
 .client-link:focus {
   border-color: var(--accent-color);
   color: var(--accent-color);
+  transition: color 250ms var(--timing-function),
+    border-color 250ms var(--timing-function);
 }
 
 .client-icon {
@@ -472,6 +493,7 @@ img {
 .footer-contact:hover,
 .footer-contact:focus {
   color: var(--accent-color);
+  transition: color 250ms var(--timing-function);
 }
 .footer .text {
   margin-bottom: 20px;
@@ -489,6 +511,7 @@ img {
 .footer .socials-link:hover,
 .footer .socials-link:focus {
   background-color: var(--accent-color);
+  transition: background-color 250ms var(--timing-function);
 }
 
 /*---------------Сторінка Портфоліо-----------------*/
@@ -518,6 +541,9 @@ img {
   color: var(--primary-bgc);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .all {
@@ -547,6 +573,7 @@ img {
 .project-item:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .project-item:not(:nth-child(3n)) {
@@ -561,7 +588,7 @@ img {
 
   overflow: hidden;
 }
-.overlay {
+.project-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -569,10 +596,13 @@ img {
   height: 100%;
   background-color: rgba(33, 150, 243, 0.9);
   transform: translateY(100%);
-  transition: transform 250ms ease;
+
+  /* transition: transform 250ms var(--timing-function); */
 }
-.project-link:hover .overlay {
+.project-link:hover .project-overlay {
   transform: translateY(0);
+
+  transition: transform 250ms var(--timing-function);
 }
 .overlay-text {
   padding: 63px 24px;
